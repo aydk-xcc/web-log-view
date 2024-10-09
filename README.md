@@ -1,13 +1,13 @@
-# log-view
-日志组件
+# web-log-view
+web日志组件
 
 ## 安装
 ```bash
-npm install log-view
+npm install web-log-view
 ```
 ## 使用
 ```javascript
-import LogView from 'log-view';
+import LogView from 'web-log-view';
 
 let view = LogView.createLogEditor(document.getElementById('log-editor'), {
     tokenProvider: {

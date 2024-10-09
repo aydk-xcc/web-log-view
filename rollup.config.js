@@ -4,7 +4,7 @@ import resolve from '@rollup/plugin-node-resolve';
 export default {
     input: './src/index.js',
     output: {
-        file: './lib/log-view.js',
+        file: './lib/web-log-view.js',
         format: 'es',
     },
     plugins: [
