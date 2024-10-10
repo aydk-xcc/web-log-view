@@ -1,7 +1,8 @@
 export default (monaco, theme={}) => {
     //设置含有custom-error等token class的主题
+    let base = theme.base || 'light';
     monaco.editor.defineTheme('log-theme', {
-        base: 'vs',
+        base: base === 'light' ? 'hc-light' : 'vs-dark',
         inherit: true,
         rules: [
             { token: 'log-info', foreground: '808080' },
@@ -11,7 +12,7 @@ export default (monaco, theme={}) => {
             { token: 'log-success', foreground: 'FFA500' }
         ],
         colors: {
-            'editor.background': theme['editor.background'] || '#FFFFFF',
+            'editor.background': theme['editor.background'] ||  base === 'light' ? '#ffffff' : '#272822',
         }
     });
 }

@@ -9,7 +9,10 @@ npm install web-log-view
 ```javascript
 import LogView from 'web-log-view';
 
-let view = LogView.createLogEditor(document.getElementById('log-editor'), {
+let view = LogView.create(document.getElementById('log-editor'), {
+    theme: {
+        base: 'dark' // dark, light
+    },
     tokenProvider: {
         error: /^Error:.*/
     }
