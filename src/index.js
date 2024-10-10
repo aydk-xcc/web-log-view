@@ -1,6 +1,7 @@
 import * as monaco from 'monaco-editor';
 import defineThemes from './theme';
 import initTokenProvider from './tokenProvider';
+import initOperator from './initOperator.js';
 
 function create(dom, options={}) {
     // 自定义主题
@@ -10,7 +11,11 @@ function create(dom, options={}) {
     if (!dom) {
         throw new Error('web-log-view: dom is required');
     }
-    editor = monaco.editor.create(dom, {
+    let logView = document.createElement('div');
+    logView.style.height = '100%';
+    logView.style.width = '100%';
+    dom.appendChild(logView);
+    editor = monaco.editor.create(logView, {
         language: 'plaintext',
         theme: 'log-theme',
         automaticLayout: true,
@@ -29,6 +34,7 @@ function create(dom, options={}) {
         },
         ...options
     });
+    initOperator(dom, editor);
     editor.updateLog = (value, scrollToEnd=true) => {
         editor.setValue(value);
         if (scrollToEnd) {
