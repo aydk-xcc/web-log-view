@@ -1,9 +1,9 @@
 export default function (monaco, options= {}) {
     let errorToken = options.error || /\[error\].*/ ;
-    let infoToken = options.error || /\[info\].*/ ;
-    let warningToken = options.error || /\[warning\].*/ ;
-    let successToken = options.error || /\[success\].*/ ;
-    let primaryToken = options.error || /\[primary\].*/ ;
+    let infoToken = options.info || /\[info\].*/ ;
+    let warningToken = options.warning || /\[warning\].*/ ;
+    let successToken = options.success || /\[success\].*/ ;
+    let primaryToken = options.primary || /\[primary\].*/ ;
     monaco.languages.setMonarchTokensProvider('plaintext',
       {
           ignoreCase: true,

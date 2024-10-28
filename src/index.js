@@ -15,6 +15,16 @@ function create(dom, options={}) {
     logView.style.height = '100%';
     logView.style.width = '100%';
     dom.appendChild(logView);
+    let tempOptions = JSON.parse(JSON.stringify(options));
+    delete tempOptions.theme;
+    delete tempOptions.tokenProvider;
+    let value = tempOptions.value || '无日志信息';
+    delete tempOptions.value;
+    let isAppend = tempOptions.append || false;
+    let model = monaco.editor.createModel(
+        value,
+        'plaintext',
+        null);
     editor = monaco.editor.create(logView, {
         language: 'plaintext',
         theme: 'log-theme',
@@ -26,17 +36,34 @@ function create(dom, options={}) {
         },
         scrollBeyondLastLine: false,
         padding: {
+            top: 10,
             bottom: 80
         },
         wordWrap: 'on',
         scrollbar: {
             verticalScrollbarSize: 4,
         },
-        ...options
+        ...tempOptions,
     });
+    editor.setModel(model);
     initOperator(dom, editor);
-    editor.updateLog = (value, scrollToEnd=true) => {
-        editor.setValue(value);
+    editor.appendLog = (val, scrollToEnd=true) => {
+        if (isAppend) {
+            value += '\n' + val;
+        }
+        model.setValue(value || '无日志信息');
+        monaco.editor.setModelLanguage(model, 'plaintext');
+        // editor.setValue(value || '无日志信息');
+        if (scrollToEnd) {
+            const lineCount = editor.getModel().getLineCount();
+            editor.revealLine(lineCount);
+        }
+    };
+
+    editor.updateLog = (val, scrollToEnd=true) => {
+        model.setValue(val || '无日志信息');
+        monaco.editor.setModelLanguage(model, 'plaintext');
+        // editor.setValue(value || '无日志信息');
         if (scrollToEnd) {
             const lineCount = editor.getModel().getLineCount();
             editor.revealLine(lineCount);

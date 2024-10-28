@@ -6,10 +6,10 @@ export default (monaco, theme={}) => {
         inherit: true,
         rules: [
             { token: 'log-info', foreground: '808080' },
-            { token: 'log-primary', foreground: '808080' },
-            { token: 'log-warning', foreground: 'ff0000', fontStyle: 'bold' },
-            { token: 'log-error', foreground: 'ff0000', fontStyle: 'bold' },
-            { token: 'log-success', foreground: 'FFA500' }
+            { token: 'log-primary', foreground: '1067EE' },
+            { token: 'log-warning', foreground: 'FF9D00', fontStyle: 'bold' },
+            { token: 'log-error', foreground: 'e76565', fontStyle: 'bold' },
+            { token: 'log-success', foreground: '6ebe22' }
         ],
         colors: {
             'editor.background': theme['editor.background'] ||  base === 'light' ? '#ffffff' : '#272822',
