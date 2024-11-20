@@ -14,6 +14,9 @@ function create(dom, options={}) {
     let logView = document.createElement('div');
     logView.style.height = '100%';
     logView.style.width = '100%';
+    while (dom.firstChild) {
+        dom.removeChild(dom.firstChild);
+    }
     dom.appendChild(logView);
     let tempOptions = JSON.parse(JSON.stringify(options));
     delete tempOptions.theme;

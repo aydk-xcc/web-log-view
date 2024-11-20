@@ -6,7 +6,7 @@ export default {
     input: './src/index.js',
     output: {
         file: './lib/web-log-view.js',
-        format: 'es',
+        format: 'es'
     },
     plugins: [
         resolve(),
